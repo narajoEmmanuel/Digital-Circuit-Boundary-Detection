@@ -1,0 +1,164 @@
+// A partir de cierto rango del sensor, se puede trabajar
+//con los 4 bits menos significativos [0,15]
+
+
+int valorADC;
+float vACSensor;
+int valor4b;
+
+void setup()
+{
+  Serial.begin(9600);
+  pinMode(6, OUTPUT);
+  pinMode(7, OUTPUT);
+  pinMode(8, OUTPUT);
+  pinMode(9, OUTPUT);
+}
+
+void loop()
+{
+  valorADC = analogRead(A0);  
+  valor4b = valorADC/64;
+  vACSensor = valorADC*(5.0/1023);
+  
+  Serial.println("Binario 4 bits"); 
+  Serial.print("Decimal 10b: "); 
+  Serial.println(valorADC);
+  Serial.print("Decimal 4b: ");
+  Serial.println(valor4b);
+  Serial.print("Tension: ");
+  Serial.println(vACSensor);
+  Serial.println("");
+  delay(2000);
+  
+  switch(valor4b){
+  	case 0:
+    	digitalWrite(6, LOW);
+      	digitalWrite(7, LOW);
+    	digitalWrite(8, LOW);
+      	digitalWrite(9, LOW);
+      	delay(1000);
+    break;
+      
+    case 1:
+    	digitalWrite(6, HIGH);
+      	digitalWrite(7, LOW);
+      	digitalWrite(8, LOW);
+      	digitalWrite(9, LOW);
+      	delay(1000);
+    break;
+    
+    case 2:
+    	digitalWrite(6, LOW);
+      	digitalWrite(7, HIGH);
+      	digitalWrite(8, LOW);
+      	digitalWrite(9, LOW);
+      	delay(1000);
+    break;
+    
+    case 3:
+    	digitalWrite(6, HIGH);
+      	digitalWrite(7, HIGH);
+      	digitalWrite(8, LOW);
+      	digitalWrite(9, LOW);
+      	delay(1000);
+    break;
+    
+    case 4:
+    	digitalWrite(6, LOW);
+      	digitalWrite(7, LOW);
+     	digitalWrite(8, HIGH);
+     	digitalWrite(9, LOW);
+      	delay(1000);
+    break;
+    
+    case 5:
+    	digitalWrite(6, HIGH);
+      	digitalWrite(7, LOW);
+      	digitalWrite(8, HIGH);
+      	digitalWrite(9, LOW);
+      	delay(1000);
+    break;
+    
+    case 6:
+    	digitalWrite(6, LOW);
+      	digitalWrite(7, HIGH);
+      	digitalWrite(8, HIGH);
+      	digitalWrite(9, LOW);
+      	delay(1000);
+    break;
+    
+    case 7:
+    	digitalWrite(6, HIGH);
+      	digitalWrite(7, HIGH);
+      	digitalWrite(8, HIGH);
+      	digitalWrite(9, LOW);
+      	delay(1000);
+    break;
+    
+    case 8:
+    	digitalWrite(6, LOW);
+      	digitalWrite(7, LOW);
+      	digitalWrite(8, LOW);
+      	digitalWrite(9, HIGH);
+      	delay(1000);
+    break;
+    
+    case 9:
+    	digitalWrite(6, HIGH);
+      	digitalWrite(7, LOW);
+      	digitalWrite(8, LOW);
+      	digitalWrite(9, HIGH);
+      	delay(1000);
+    break;
+    
+    case 10:
+    	digitalWrite(6, LOW);
+      	digitalWrite(7, HIGH);
+      	digitalWrite(8, LOW);
+      	digitalWrite(9, HIGH);
+      	delay(1000);
+    break;
+    
+    case 11:
+    	digitalWrite(6, HIGH);
+      	digitalWrite(7, HIGH);
+      	digitalWrite(8, LOW);
+      	digitalWrite(9, HIGH);
+      	delay(1000);
+    break;
+    
+    case 12:
+    	digitalWrite(6, LOW);
+      	digitalWrite(7, LOW);
+      	digitalWrite(8, HIGH);
+      	digitalWrite(9, HIGH);
+      	delay(1000);
+    break;
+    
+    case 13:
+    	digitalWrite(6, HIGH);
+      	digitalWrite(7, LOW);
+      	digitalWrite(8, HIGH);
+      	digitalWrite(9, HIGH);
+      	delay(1000);
+    break;
+    
+    case 14:
+    	digitalWrite(6, LOW);
+      	digitalWrite(7, HIGH);
+      	digitalWrite(8, HIGH);
+      	digitalWrite(9, HIGH);
+      	delay(1000);
+    break;
+    
+    case 15:
+    	digitalWrite(6, HIGH);
+      	digitalWrite(7, HIGH);
+      	digitalWrite(8, HIGH);
+      	digitalWrite(9, HIGH);
+      	delay(1000);
+    break;
+  }
+}
+
